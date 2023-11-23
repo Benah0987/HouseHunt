@@ -43,6 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_083239) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.text "bio"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_083239) do
     t.string "room_type"
     t.integer "price"
     t.string "tenant_name"
-    t.boolean "allow_nil"
+    t.boolean "occupied", default: false
     t.integer "property_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

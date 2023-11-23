@@ -2,8 +2,14 @@
 class Room < ApplicationRecord
   belongs_to :property
   has_many_attached :images
-  # other associations and validations...
+
   validates :room_type, presence: true
   validates :price, presence: true
-  validates :tenant_name, allow_nil: true
+
+  # Validate presence of tenant_name if the room is occupied
+  validates :tenant_name, presence: true, if: :occupied?
+
+  def unoccupied?
+    !occupied?
+  end
 end

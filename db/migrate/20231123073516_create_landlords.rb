@@ -4,6 +4,8 @@ class CreateLandlords < ActiveRecord::Migration[7.0]
       t.string :username
       t.string :email
       t.string :password_digest
+      t.text :bio
+      t.string :phone_number
 
       t.timestamps
     end
