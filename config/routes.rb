@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :new, :create]
   end
 
-  resources :users, only: [:new, :create, :show, :edit] do
+  resources :users, only: [:index, :create, :show, :edit, :update, :destroy] do
     resources :messages, only: [:index, :new, :create]
   end
 

@@ -1,6 +1,7 @@
 # app/models/user.rb
 class User < ApplicationRecord
     has_one_attached :avatar
+    has_secure_password
     # other associations and validations...
   
     validates :username, presence: true
