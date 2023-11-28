@@ -4,6 +4,11 @@ class PropertiesController < ApplicationController
     def new
       @property = Property.new
     end
+
+    def index
+      @properties = Property.where(landlord_id: params[:landlord_id])
+      render json: @properties
+    end
   
     def create
       @property = Property.new(property_params)

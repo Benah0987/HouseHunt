@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
       @message = @user.messages.build
     end
   
+    def index
+      @messages = Message.where(landlord_id: params[:landlord_id])
+      render json: @messages
+    end
+    
     def create
       @message = @user.messages.build(message_params)
       if @message.save

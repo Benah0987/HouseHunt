@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   
 
   def show
-    # Implementation for showing a specific user
+    render json: @user
   end
 
   def edit
-    # Implementation for editing a specific user
+    render json: @user
   end
 
   def update
