@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :new, :create]
   end
 
-  # Other routes for your application...
+  # Session routes
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
-  root 'welcome#index' # Replace 'welcome#index' with the desired root path.
+  # Other routes for your application...
+  post '/landlords/login', to: 'landlords#process_login'
+  get '/landlords/logout', to: 'sessions#destroy_landlord'
+ 
 end

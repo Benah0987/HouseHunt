@@ -1,6 +1,8 @@
 class LandlordsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_landlord, only: [:show, :edit, :update]
   before_action :require_login, except: [:create, :login, :process_login]
+
 
   def show
     render json: {
@@ -32,6 +34,7 @@ class LandlordsController < ApplicationController
       render json: { errors: @landlord.errors.full_messages }, status: :unprocessable_entity
     end
   end
+  
 
 
 
@@ -53,8 +56,10 @@ class LandlordsController < ApplicationController
   end
 
   def landlord_params
-    params.require(:landlord).permit(:username, :email, :password, :bio, :phone_number, :avatar)
+    params.permit(:username, :email, :bio, :phone_number,:images, :password)
   end
+  
+  
 
   def require_login
     unless current_landlord

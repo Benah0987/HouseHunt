@@ -6,6 +6,7 @@ class CreateLandlords < ActiveRecord::Migration[7.0]
       t.string :password_digest
       t.text :bio
       t.string :phone_number
+      t.string :image
 
       t.timestamps
     end
