@@ -6,9 +6,10 @@ class LandlordsController < ApplicationController
 
   def show
     render json: {
-      landlord: @landlord,
-      properties: @landlord.properties,
-      messages: @landlord.messages
+      user: current_user,
+      landlord: current_landlord,
+      properties: current_landlord&.properties,
+      messages: current_landlord&.messages
     }
   end
   
@@ -52,11 +53,11 @@ class LandlordsController < ApplicationController
   private
 
   def set_landlord
-    @landlord = Landlord.find(params[:id])
+    @landlord = current_landlord
   end
 
   def landlord_params
-    params.permit(:username, :email, :bio, :phone_number,:images, :password)
+    params.permit(:username, :email, :bio, :phone_number,:image, :password)
   end
   
   

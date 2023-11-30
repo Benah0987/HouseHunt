@@ -1,7 +1,7 @@
 # app/models/room.rb
 class Room < ApplicationRecord
   belongs_to :property
-  has_many_attached :images
+  
 
   validates :room_type, presence: true
   validates :price, presence: true

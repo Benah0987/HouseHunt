@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_083239) do
   end
 
   create_table "properties", force: :cascade do |t|
+    t.string "name"
+    t.string "images"
     t.string "location"
     t.string "environment"
     t.string "security"
@@ -78,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_083239) do
     t.string "tenant_name"
     t.boolean "occupied", default: false
     t.integer "property_id", null: false
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_rooms_on_property_id"

@@ -8,6 +8,7 @@ class CreateRooms < ActiveRecord::Migration[7.0]
       t.string :tenant_name
       t.boolean :occupied, default: false
       t.references :property, null: false, foreign_key: true
+      t.string :image
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 # app/models/landlord.rb
 class Landlord < ApplicationRecord
-  has_one_attached :avatar
+  
   has_many :properties, dependent: :destroy
   has_many :messages, through: :properties
   has_secure_password
