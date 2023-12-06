@@ -8,20 +8,17 @@ import SignUp from "./SignUp";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Navbar />
         <Routes>
-        <Route index element={<Landing />} />
-          
+          <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
-
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-       </Routes>
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
-
 export default App;
