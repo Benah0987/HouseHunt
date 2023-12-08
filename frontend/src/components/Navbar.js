@@ -7,14 +7,14 @@ function Navbar() {
     // Main Navigation
     <header>
       {/* Jumbotron */}
-      <div className="p-3 text-center bg-white border-bottom">
+      <div className="p-3 text-center bg-primary border-bottom">
         <div className="container">
           <div className="row">
             {/* Left elements */}
             <div className="col-md-4 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
               <Link to="/home" className="ms-md-2" style={{ fontSize: '24px', color: 'black', fontWeight: 'bold', textDecoration: 'none' }}>
                 <span style={{ color: 'black' }}>House</span>
-                <span style={{ color: 'blue' }}>Hunt</span>
+                <span style={{ color: 'white' }}>Hunt</span>
               </Link>
             </div>
 

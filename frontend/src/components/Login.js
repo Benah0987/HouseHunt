@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import './login.css'
 
 function Login() {
   return (
@@ -8,13 +10,13 @@ function Login() {
           <div className="login-box">
             <div className="login-snip">
               <input id="tab-1" type="radio" name="tab" className="sign-in" checked />
-              <label htmlFor="tab-1" className="tab">
+              <Link to="/login" className="tab">
                 Login
-              </label>
+              </Link>
               <input id="tab-2" type="radio" name="tab" className="sign-up" />
-              <label htmlFor="tab-2" className="tab">
+              <Link to="/signup" className="tab">
                 Sign Up
-              </label>
+              </Link>
               <div className="login-space">
                 <div className="login">
                   <div className="group">
@@ -43,39 +45,7 @@ function Login() {
                     <a href="#">Forgot Password?</a>
                   </div>
                 </div>
-                <div className="sign-up-form">
-                  <div className="group">
-                    <label htmlFor="user" className="label">
-                      Username
-                    </label>
-                    <input id="user" type="text" className="input" placeholder="Create your Username" />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Password
-                    </label>
-                    <input id="pass" type="password" className="input" data-type="password" placeholder="Create your password" />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Repeat Password
-                    </label>
-                    <input id="pass" type="password" className="input" data-type="password" placeholder="Repeat your password" />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Email Address
-                    </label>
-                    <input id="pass" type="text" className="input" placeholder="Enter your email address" />
-                  </div>
-                  <div className="group">
-                    <input type="submit" className="button" value="Sign Up" />
-                  </div>
-                  <div className="hr"></div>
-                  <div className="foot">
-                    <label htmlFor="tab-1">Already Member?</label>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
