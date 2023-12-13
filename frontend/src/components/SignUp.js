@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function SignUp() {
+  const { signup } = useAuth();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSignUp = async () => {
+    try {
+      await signup(username, password, email);
+    } catch (error) {
+      console.error('Signup error:', error);
+      // Handle other errors if necessary
+    }
+  };
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto p-0">
@@ -22,13 +37,41 @@ function SignUp() {
                     <label htmlFor="user" className="label">
                       Username
                     </label>
-                    <input id="user" type="text" className="input" placeholder="Enter your username" />
+                    <input
+                      id="user"
+                      type="text"
+                      className="input"
+                      placeholder="Enter your username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
                   </div>
                   <div className="group">
                     <label htmlFor="pass" className="label">
                       Password
                     </label>
-                    <input id="pass" type="password" className="input" data-type="password" placeholder="Enter your password" />
+                    <input
+                      id="pass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="group">
+                    <label htmlFor="email" className="label">
+                      Email Address
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="input"
+                      placeholder="Enter your email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                   <div className="group">
                     <input id="check" type="checkbox" className="check" checked />
@@ -37,35 +80,12 @@ function SignUp() {
                     </label>
                   </div>
                   <div className="group">
-                    <input type="submit" className="button" value="Sign In" />
-                  </div>
-                  <div className="hr"></div>
-                  <div className="foot">
-                    <a href="#">Forgot Password?</a>
-                  </div>
-                </div>
-                <div className="sign-up-form">
-                  <div className="group">
-                    <label htmlFor="user" className="label">
-                      Username
-                    </label>
-                    <input id="user" type="text" className="input" placeholder="Create your Username" />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Password
-                    </label>
-                    <input id="pass" type="password" className="input" data-type="password" placeholder="Create your password" />
-                  </div>
-                 
-                  <div className="group">
-                    <label htmlFor="pass" className="label"a>
-                      Email Address
-                    </label>
-                    <input id="pass" type="text" className="input" placeholder="Enter your email address" />
-                  </div>
-                  <div className="group">
-                    <input type="submit" className="button" value="Sign Up" />
+                    <input
+                      type="submit"
+                      className="button"
+                      value="Sign Up"
+                      onClick={handleSignUp}
+                    />
                   </div>
                   <div className="hr"></div>
                   <div className="foot">
@@ -78,7 +98,7 @@ function SignUp() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

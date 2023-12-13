@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import './login.css'
+import { useAuth } from '../context/AuthContext';
+import './login.css';
 
 function Login() {
+  const { login } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      await login(email, password);
+    } catch (error) {
+      console.error('Login error:', error);
+      // Handle other errors if necessary
+    }
+  };
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto p-0">
@@ -21,15 +35,30 @@ function Login() {
                 <div className="login">
                   <div className="group">
                     <label htmlFor="user" className="label">
-                      Username
+                      Email
                     </label>
-                    <input id="user" type="text" className="input" placeholder="Enter your username" />
+                    <input
+                      id="user"
+                      type="email"
+                      className="input"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                   <div className="group">
                     <label htmlFor="pass" className="label">
                       Password
                     </label>
-                    <input id="pass" type="password" className="input" data-type="password" placeholder="Enter your password" />
+                    <input
+                      id="pass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </div>
                   <div className="group">
                     <input id="check" type="checkbox" className="check" checked />
@@ -38,14 +67,18 @@ function Login() {
                     </label>
                   </div>
                   <div className="group">
-                    <input type="submit" className="button" value="Sign In" />
+                    <input
+                      type="submit"
+                      className="button"
+                      value="Sign In"
+                      onClick={handleLogin}
+                    />
                   </div>
                   <div className="hr"></div>
                   <div className="foot">
                     <a href="#">Forgot Password?</a>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

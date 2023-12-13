@@ -30,10 +30,10 @@ function Landing() {
       }, step);
     }
 
-    counter("count1", 0, 5, 30);
-    counter("count2", 100, 5, 25);
-    counter("count3", 0, 1, 30);
-    counter("count4", 0, 1, 50);
+    counter("count1", 0, 1287, 3000);
+    counter("count2", 100, 5786, 2500);
+    counter("count3", 0, 1440, 3000);
+    counter("count4", 0, 7110, 3000);
   }, []);
 
   return (
