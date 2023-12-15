@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const headerBlueStyle = {
@@ -32,11 +33,10 @@ function Home() {
                 Start your journey today and make your dream home a reality!
                 <br />
               </p>
-              <button
-                className="btn btn-light btn-lg action-button"
-                type="button"
-              >
-                Explore Properties <i className="fa fa-long-arrow-right ml-2"></i>
+              <button className="btn btn-light btn-lg action-button" type="button">
+                <Link to="/listing">
+                  Explore Properties <i className="fa fa-long-arrow-right ml-2"></i>
+                </Link>
               </button>
             </div>
             <div className="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">

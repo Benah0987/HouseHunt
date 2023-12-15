@@ -7,6 +7,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import About from "./About";
 import { AuthProvider } from "../context/AuthContext";
+import PropertyList from "./PropertyList";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
+            <Route path="/listing" element={<PropertyList />} />
           </Routes>
         </div>
       </AuthProvider>
