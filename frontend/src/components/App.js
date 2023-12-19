@@ -8,6 +8,7 @@ import SignUp from "./SignUp";
 import About from "./About";
 import { AuthProvider } from "../context/AuthContext";
 import PropertyList from "./PropertyList";
+import Rooms from './Rooms';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/listing" element={<PropertyList />} />
+            <Route path="/property/:property_id/rooms" element={Rooms} />
           </Routes>
         </div>
       </AuthProvider>

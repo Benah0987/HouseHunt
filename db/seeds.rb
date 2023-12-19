@@ -22,38 +22,53 @@ landlord2 = Landlord.create!(
 # No need to explicitly save landlords as create! saves and returns the record
 
 # Properties
-property1 = landlord1.properties.create!(
-  name: 'Property A',
-  images: ['url_to_property_image1', 'url_to_property_image2'],
-  location: 'City X',
-  environment: 'Urban',
-  security: 'High'
-)
+locations = ['Nairobi', 'Nakuru', 'Mombasa', 'Kiambu', 'Thika']
+room_types = ['Single', 'Double', '1 Bedroom', '2 Bedroom', '3 Bedroom']
 
-property2 = landlord2.properties.create!(
-  name: 'Property B',
-  images: ['url_to_property_image3', 'url_to_property_image4'],
-  location: 'City Y',
-  environment: 'Suburban',
-  security: 'Medium'
-)
+property_images = [
+  'https://images.unsplash.com/photo-1559230928-34c7c281d7c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1aWxkaW5nJTIwcmVudGFsc3xlbnwwfHwwfHx8MA%3D%3D',
+  'https://plus.unsplash.com/premium_photo-1677620678562-5876edb7c126?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nfGVufDB8fDB8fHww',
+  'https://images.unsplash.com/photo-1590291127093-24b2232c51ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHByb3BlcnR5JTIwbWFuYWdlbWVudHxlbnwwfHwwfHx8MA%3D%3D'
+]
 
-# Rooms (associated with properties)
+room_images = [
+  'https://images.unsplash.com/photo-1518481852452-9415b262eba4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2luZ2xlJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://propscout.co.ke/storage/properties/files/double-room-with-a-toilet-1efuk.png',
+  'https://pictures-kenya.jijistatic.com/56409058_MzAwLTIyNS01Mjg3MjIyM2Ey.webp',
+  'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmVkcm9vbXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://pictures-kenya.jijistatic.com/58073752_MzAwLTIyNS1iYTE3ZjA1NTM1.webp'
+]
 
-room1 = property1.rooms.create!(
-  room_type: 'Single',
-  price: 800,
-  tenant_name: 'Tenant A',
-  occupied: true,
-  image: ['url_to_room_image1', 'url_to_room_image2']
-)
+15.times do |i|
+  landlord = i.even? ? landlord1 : landlord2
+  location = locations[i % 5]
+  property = landlord.properties.create!(
+    name: "Property #{i + 1}",
+    images: property_images,
+    location: location,
+    environment: 'Urban',
+    security: 'High'
+  )
 
-room2 = property2.rooms.create!(
-  room_type: 'Double',
-  price: 1000,
-  occupied: false,
-  image: ['url_to_room_image3', 'url_to_room_image4']
-)
+  room_type = room_types[i % 5]
+  price = case room_type
+          when 'Single' then 800
+          when 'Double' then 1000
+          when '1 Bedroom' then 1200
+          when '2 Bedroom' then 1500
+          when '3 Bedroom' then 1800
+          end
+
+  (10..20).to_a.sample.times do |j|
+    property.rooms.create!(
+      room_type: room_type,
+      price: price,
+      tenant_name: "Tenant #{j + 1}",
+      occupied: j.even?,
+      image: room_images
+    )
+  end
+end
 
 # Users
 user1 = User.create!(
@@ -73,14 +88,14 @@ user2 = User.create!(
 message1 = Message.create!(
   user: user1,
   landlord: landlord1,
-  property: property1,
+  property: Property.first,
   content: 'Interested in renting a room.'
 )
 
 message2 = Message.create!(
   user: user2,
   landlord: landlord2,
-  property: property2,
+  property: Property.last,
   content: 'Can I schedule a property visit?'
 )
 

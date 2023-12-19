@@ -32,13 +32,13 @@ function PropertyList() {
             alt="Slide 1"
           />
           <div className="carousel-caption d-flex align-items-center justify-content-center">
-            <div className="text-center text-white">
+            <div className="text-center text-dark">
               <h2>Discover Your Dream Home</h2>
               <p>
                 Explore our curated selection of properties listed on HouseHunt.
                 Find your ideal home and start your journey today!
               </p>
-              <Link to="/properties" className="btn btn-light btn-lg">
+              <Link to="/properties" className="btn btn-primary btn-lg">
                 Explore Properties
               </Link>
             </div>
@@ -107,41 +107,50 @@ function PropertyList() {
         <div className="row mt-4">
           <div className="col-lg-10 mx-auto">
             <div className="property-list mb-60">
-              {properties.map(property => (
-                <div
-                  key={property.id}
-                  className="property-card mb-4 d-md-flex align-items-center justify-content-between"
-                  style={{ height: '300px', backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '10px', marginTop: '20px' }}
-                >
-                  <div className="property-image-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                    {/* Assuming images is an array of URLs */}
-                    {property.images && property.images.length > 0 && (
-                      <img
-                        src={property.images[0]}
-                        alt={`Property ${property.id}`}
-                        style={{ maxWidth: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
-                      />
-                    )}
-                  </div>
-                  <div className="property-content">
-                    <h5 className="text-center text-md-left">{property.name}</h5>
-                    <div className="property-details">
-                      <p>
-                        <strong>Location:</strong> {property.location}
-                      </p>
-                      <p>
-                        <strong>Environment:</strong> {property.environment}
-                      </p>
-                      <p>
-                        <strong>Security:</strong> {property.security}
-                      </p>
-                    </div>
-                    <Link to={`/property/${property.id}`} className="btn btn-primary btn-sm">
-                      See Rooms
-                    </Link>
-                  </div>
-                </div>
-              ))}
+            // ...
+
+{properties.map(property => (
+  <div
+    key={property.id}
+    className="property-card mb-4 d-md-flex align-items-center justify-content-between"
+    style={{ height: '300px', backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '10px', marginTop: '20px' }}
+  >
+    <div className="property-image-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+      {/* Check if property.images is an array */}
+      {Array.isArray(property.images) && property.images.length > 0 && (
+        <div>
+          {property.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Property ${property.id} - Image ${index + 1}`}
+              style={{ maxWidth: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', marginBottom: '10px' }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+    <div className="property-content">
+      <h5 className="text-center text-md-left">{property.name}</h5>
+      <div className="property-details">
+        <p>
+          <strong>Location:</strong> {property.location}
+        </p>
+        <p>
+          <strong>Environment:</strong> {property.environment}
+        </p>
+        <p>
+          <strong>Security:</strong> {property.security}
+        </p>
+      </div>
+      <Link to={`/property/${property.id}/rooms`} className="btn btn-primary btn-sm">
+        See Rooms
+      </Link>
+    </div>
+  </div>
+))}
+
+
             </div>
             <div className="search-button mb-4">
               <button

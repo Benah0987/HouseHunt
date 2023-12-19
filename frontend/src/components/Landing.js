@@ -48,9 +48,7 @@ function Landing() {
                 <Link to="/SignUp?type=landlord" className="main-btn">
                   Sign Up as a Homeowner <i className="fas fa-home ps-3"></i>
                 </Link>
-                <Link to="/SignUp?type=user" className="white-btn ms-lg-4 mt-lg-0 mt-4">
-                  Find Your Dream Home <i className="fas fa-search ps-3"></i>
-                </Link>
+                
               </div>
             </div>
             <div className="col-lg-7 col-md-6 text-md-end mt-md-0 mt-4">
