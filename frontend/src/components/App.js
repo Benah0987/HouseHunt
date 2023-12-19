@@ -23,7 +23,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/listing" element={<PropertyList />} />
-            <Route path="/property/:property_id/rooms" element={Rooms} />
+            <Route path="/properties/:property_id/rooms" element={<Rooms />} />
+
+
           </Routes>
         </div>
       </AuthProvider>
