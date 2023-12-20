@@ -9,6 +9,9 @@ import About from "./About";
 import { AuthProvider } from "../context/AuthContext";
 import PropertyList from "./PropertyList";
 import Rooms from './Rooms';
+import Landlordin from "./Landlordin";
+import Landlordup from "./Landlordup";
+import Payment from "./Payment";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/listing" element={<PropertyList />} />
             <Route path="/properties/:property_id/rooms" element={<Rooms />} />
+            <Route path="/landlordin" element={<Landlordin />} />
+            <Route path="/landlordup" element={<Landlordup />} />
 
+            <Route path="/rooms/:roomId/payment" element={<Payment />} />
 
           </Routes>
         </div>

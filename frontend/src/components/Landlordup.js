@@ -1,9 +1,8 @@
 import React from 'react'
 
-function Landlordin() {
+function Landlordup() {
   return (
-    <div>
-      <div className="row">
+    <div className="row">
       <div className="col-md-6 mx-auto p-0">
         <div className="card">
           <div className="login-box">
@@ -20,15 +19,15 @@ function Landlordin() {
                 <div className="login">
                   <div className="group">
                     <label htmlFor="user" className="label">
-                      Email
+                      Username
                     </label>
                     <input
                       id="user"
-                      type="email"
+                      type="text"
                       className="input"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   <div className="group">
@@ -46,6 +45,19 @@ function Landlordin() {
                     />
                   </div>
                   <div className="group">
+                    <label htmlFor="email" className="label">
+                      Email Address
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="input"
+                      placeholder="Enter your email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="group">
                     <input id="check" type="checkbox" className="check" checked />
                     <label htmlFor="check">
                       <span className="icon"></span> Keep me Signed in
@@ -55,13 +67,13 @@ function Landlordin() {
                     <input
                       type="submit"
                       className="button"
-                      value="Sign In"
-                      onClick={handleLogin}
+                      value="Sign Up"
+                      onClick={handleSignUp}
                     />
                   </div>
                   <div className="hr"></div>
                   <div className="foot">
-                    <a href="#">Forgot Password?</a>
+                    <label htmlFor="tab-1">Already Member?</label>
                   </div>
                 </div>
               </div>
@@ -70,8 +82,7 @@ function Landlordin() {
         </div>
       </div>
     </div>
-    </div>
   )
 }
 
-export default Landlordin
+export default Landlordup

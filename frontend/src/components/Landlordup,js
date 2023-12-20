@@ -1,9 +1,0 @@
-import React from 'react'
-
-function Landlordup() {
-  return (
-    <div>Landlordin</div>
-  )
-}
-
-export default Landlordup

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './rooms.css';
+
 
 function Rooms() {
   const { property_id } = useParams();
   const [roomsData, setRoomsData] = useState([]);
+  const navigate = useNavigate(); // Replace `useHistory` with `useNavigate`
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -29,6 +31,16 @@ function Rooms() {
     // Specify property_id as a dependency for useEffect
   }, [property_id]);
 
+  const handleDepositPayment = (roomId) => {
+    // Navigate to the Payment component with the roomId as a parameter
+    navigate(`/rooms/${roomId}/payment`);
+  };
+
+  const handleContactLandlord = (landlordId) => {
+    // Implement logic for contacting landlord
+    console.log(`Contact landlord ${landlordId}`);
+  };
+
   return (
     <div className="container-background container py-5">
       <div className="row text-center text-white mb-5">
@@ -40,26 +52,56 @@ function Rooms() {
       <div className="row">
         <div className="col-lg-8 mx-auto">
           <ul className="list-group shadow">
-            {roomsData.map(room => (
-              <li key={room.id} className="list-group-item">
-                <div className="media align-items-lg-center flex-column flex-lg-row p-3">
-                  <div className="media-body order-2 order-lg-1">
-                    <h5 className="mt-0 font-weight-bold mb-2">{room.room_type}</h5>
-                    <p className="font-italic text-muted mb-0 small">
-                      {room.occupied ? 'Occupied' : 'Vacant'}
-                    </p>
-                    <div className="d-flex align-items-center justify-content-between mt-1">
+            {roomsData.map((room) => (
+              <li key={room.id} className="list-group-item" style={{ height: '250px' }}>
+                <div className="row h-100">
+                  {/* Image Column (Linked) */}
+                  <div className="col-lg-4 mb-3 mb-lg-0">
+                    <Link to={`/rooms/${room.id}`}>
+                      <img
+                        src={room.image}
+                        alt={`Room ${room.id}`}
+                        width="200"
+                        className="img-fluid rounded"
+                        style={{ height: '100%' }}
+                      />
+                    </Link>
+                  </div>
+                  {/* Room Information Column */}
+                  <div className="col-lg-8 d-flex flex-column justify-content-between">
+                    <div>
+                      <h5 className="mt-0 font-weight-bold mb-2">{room.room_type}</h5>
+                      <p className="font-italic text-muted mb-0 small">
+                        {room.occupied ? 'Occupied' : 'Vacant'}
+                      </p>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-between">
                       <h6 className="font-weight-bold my-2">${room.price.toFixed(2)}</h6>
+                      {room.occupied ? (
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => handleContactLandlord(room.landlord_id)}
+                        >
+                          Contact Landlord
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className="btn btn-success mr-2"
+                            onClick={() => handleDepositPayment(room.id)}
+                          >
+                            Pay Deposit
+                          </button>
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => handleContactLandlord(room.landlord_id)}
+                          >
+                            Contact Landlord
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
-                  {room.image && (
-                    <img
-                      src={room.image}
-                      alt={`Room ${room.id}`}
-                      width="200"
-                      className="ml-lg-5 order-1 order-lg-2"
-                    />
-                  )}
                 </div>
               </li>
             ))}

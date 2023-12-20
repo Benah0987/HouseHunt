@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './property.css';
-
 function PropertyList() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    // Fetch properties data
     const fetchProperties = async () => {
       try {
         const response = await fetch('http://127.0.0.1:3000/properties');
@@ -21,9 +19,7 @@ function PropertyList() {
       }
     };
 
-    fetchProperties(); // Call the function immediately
-
-    // No specific dependencies for useEffect in this case
+    fetchProperties();
   }, []);
 
   return (
@@ -54,25 +50,18 @@ function PropertyList() {
                   marginTop: '20px',
                 }}
               >
-                <div className="property-image-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                  {/* Check if property.images is an array */}
-                  {Array.isArray(property.images) && property.images.length > 0 && (
-                    <div>
-                      {property.images.map((image, index) => (
-                        <img
-                          key={index}
-                          src={image}
-                          alt={`Property ${property.id} - Image ${index + 1}`}
-                          style={{
-                            maxWidth: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            borderRadius: '8px',
-                            marginBottom: '10px',
-                          }}
-                        />
-                      ))}
-                    </div>
+                <div className="property-image-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex" style={{ width: '50%', height: '100%' }}>
+                  {property.images && (
+                    <img
+                      src={property.images} // Use the single image for each property
+                      alt={`Property ${property.id} - Image`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                      }}
+                    />
                   )}
                 </div>
                 <div className="property-content">
