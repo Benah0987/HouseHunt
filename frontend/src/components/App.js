@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import About from "./About";
+import { LandlordProvider } from '../context/LandlordContext';
 import { AuthProvider } from "../context/AuthContext";
 import PropertyList from "./PropertyList";
 import Rooms from './Rooms';
@@ -19,6 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        < LandlordProvider>
         <div className="App">
           <Navbar />
           <Routes>
@@ -37,6 +39,7 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        </LandlordProvider>
       </AuthProvider>
     </BrowserRouter>
   );

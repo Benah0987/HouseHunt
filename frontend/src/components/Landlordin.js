@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LandlordContext } from '../context/LandlordContext';
+import { useLandlord } from '../context/LandlordContext'; // Updated import
 
 function Landlordin() {
-  const landlordContext = useContext(LandlordContext);
-  const { login } = landlordContext;
-
+  const { login } = useLandlord(); // Use the useLandlord hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

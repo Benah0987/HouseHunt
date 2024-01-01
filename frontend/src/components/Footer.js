@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div className="container my-5">
+    <div style={{ backgroundColor: '#2c3e50', marginBottom: '0' }}>
       {/* Footer */}
       <footer className="text-center text-lg-start text-dark" style={{ backgroundColor: '#2c3e50' }}>
         {/* Section: Social media */}
@@ -43,7 +43,7 @@ function Footer() {
                 <h6 className="text-uppercase fw-bold">House Hunt</h6>
                 <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px', backgroundColor: '#ecf0f1', height: '2px' }} />
                 <p>
-                  Discover your dream home with House Hunt. We make finding the perfect property easy and enjoyable.
+                  Discover your comfort home with House Hunt. We make finding the perfect property easy and enjoyable.
                 </p>
               </div>
               {/* Grid column */}
