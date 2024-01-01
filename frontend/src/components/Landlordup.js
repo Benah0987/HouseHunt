@@ -1,6 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Landlordup() {
+  
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto p-0">

@@ -12,6 +12,8 @@ import Rooms from './Rooms';
 import Landlordin from "./Landlordin";
 import Landlordup from "./Landlordup";
 import Payment from "./Payment";
+import Footer from "./Footer"
+
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
             <Route path="/rooms/:roomId/payment" element={<Payment />} />
 
           </Routes>
+          <Footer />
         </div>
       </AuthProvider>
     </BrowserRouter>
