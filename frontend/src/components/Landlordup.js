@@ -1,11 +1,40 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLandlord } from '../context/LandlordContext'; // Update the import path
 
 function Landlordup() {
-  
+  const { signUp } = useLandlord(); // Use the signUp function from the LandlordContext
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  const [image, setImage] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleSignUp = async () => {
+    try {
+      // Include logic to handle sign up with the form data
+      const formData = {
+        username,
+        password,
+        email,
+        bio,
+        phone_number,
+        image,
+      };
+
+      // Call the signUp function from LandlordContext
+      await signUp(formData);
+
+      // After successful sign-up, navigate to Landlordin.js
+      navigate('/landlordin');
+    } catch (error) {
+      // Handle the error if needed
+      console.error('Sign-up error:', error.message);
+    }
+  };
 
   return (
     <div className="row">
@@ -64,6 +93,45 @@ function Landlordup() {
                     />
                   </div>
                   <div className="group">
+                    <label htmlFor="bio" className="label">
+                      Bio
+                    </label>
+                    <input
+                      id="bio"
+                      type="text"
+                      className="input"
+                      placeholder="Enter your bio"
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                    />
+                  </div>
+                  <div className="group">
+                    <label htmlFor="phone_number" className="label">
+                      Phone Number
+                    </label>
+                    <input
+                      id="phone_number"
+                      type="text"
+                      className="input"
+                      placeholder="Enter your phone number"
+                      value={phone_number}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </div>
+                  <div className="group">
+                    <label htmlFor="image" className="label">
+                      Image URL
+                    </label>
+                    <input
+                      id="image"
+                      type="text"
+                      className="input"
+                      placeholder="Enter your image URL"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
+                    />
+                  </div>
+                  <div className="group">
                     <input id="check" type="checkbox" className="check" checked />
                     <label htmlFor="check">
                       <span className="icon"></span> Keep me Signed in
@@ -88,7 +156,7 @@ function Landlordup() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Landlordup
+export default Landlordup;

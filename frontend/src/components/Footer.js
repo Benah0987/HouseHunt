@@ -2,11 +2,11 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: '#2c3e50', marginBottom: '0' }}>
+    <div style={{ backgroundColor: '#3498db', marginBottom: '0', marginTop: '60px' }}>
       {/* Footer */}
-      <footer className="text-center text-lg-start text-dark" style={{ backgroundColor: '#2c3e50' }}>
+      <footer className="text-center text-lg-start " >
         {/* Section: Social media */}
-        <section className="d-flex justify-content-between p-4 text-white" style={{ backgroundColor: '#3498db' }}>
+        <section className= "d-flex justify-content-between p-4 text-white m-0" style={{ backgroundColor: '#3498db', margin: '0', padding: '0' }}>
           {/* Left */}
           <div className="me-5">
             <span>Connect with us on social media:</span>
@@ -15,16 +15,17 @@ function Footer() {
 
           {/* Right */}
           <div>
-            <a href="#" className="text-white me-4">
+            <a href="https://www.facebook.com/rudboi.clarks" className="text-white me-4" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="text-white me-4">
-              <i className="fab fa-twitter"></i>
+           
+            <a href="https://twitter.com/WBenayah" className="text-white me-4" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" className="text-white me-4">
+            <a href="https://www.instagram.com/wanyoike_benayah/?utm_source=ig_web_button_share_sheet" className="text-white me-4" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="#" className="text-white me-4">
+            <a href="https://www.linkedin.com/in/benayah-kimama-9a3192236/" className="text-white me-4">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>
@@ -33,15 +34,15 @@ function Footer() {
         {/* Section: Social media */}
 
         {/* Section: Links  */}
-        <section className="">
-          <div className="container text-center text-md-start mt-5">
+        <section className="m-0 pe-4" style={{ backgroundColor: 'black', color: 'white' }} >
+          <div className="container text-center text-md-start ">
             {/* Grid row */}
             <div className="row mt-3">
               {/* Grid column */}
               <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 {/* Content */}
                 <h6 className="text-uppercase fw-bold">House Hunt</h6>
-                <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px', backgroundColor: '#ecf0f1', height: '2px' }} />
+                <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px',  height: '2px' }} />
                 <p>
                   Discover your comfort home with House Hunt. We make finding the perfect property easy and enjoyable.
                 </p>

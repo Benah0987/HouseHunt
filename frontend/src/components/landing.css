@@ -77,9 +77,9 @@
     
   }
   .counter-section{
-    background-color: blue;
+    background-color: #3498db;
     padding:2.5rem 0;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .counter-section p{
     color: white;
