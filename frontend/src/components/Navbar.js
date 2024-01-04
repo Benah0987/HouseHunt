@@ -90,7 +90,7 @@ function Navbar() {
         {/* Updated link for "Home" */}
         <Link
           className="nav-link btn shadow-0 p-0 me-3"
-          to="/home"
+          to="/"
           style={{
             fontWeight: 'bold',
             fontSize: '18px',

@@ -43,7 +43,7 @@ function Footer() {
                 {/* Content */}
                 <h6 className="text-uppercase fw-bold">House Hunt</h6>
                 <hr className="mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px',  height: '2px' }} />
-                <p>
+                <p className='text-white'>
                   Discover your comfort home with House Hunt. We make finding the perfect property easy and enjoyable.
                 </p>
               </div>
