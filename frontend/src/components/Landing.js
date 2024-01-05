@@ -113,7 +113,7 @@ function Landing() {
               </div>
               <div className="col-md-6">
                 <div className="text-column">
-                  <h2>Find Your Perfect Home With Us</h2>
+                  <h2>Find Your Comfort Home With Us</h2>
                   <p>Explore a variety of homes that suit your preferences. We're here to make your house hunting experience enjoyable and stress-free.</p>
                   <button className="main-btn mt-3">Learn More</button>
                 </div>

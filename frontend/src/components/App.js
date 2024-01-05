@@ -14,6 +14,7 @@ import Landlordin from "./Landlordin";
 import Landlordup from "./Landlordup";
 import Payment from "./Payment";
 import Footer from "./Footer"
+import Dashboard from "./Dashboard";
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
             <Route path="/properties/:property_id/rooms" element={<Rooms />} />
             <Route path="/landlordin" element={<Landlordin />} />
             <Route path="/landlordup" element={<Landlordup />} />
-
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/rooms/:roomId/payment" element={<Payment />} />
 
           </Routes>
