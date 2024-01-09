@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_landlord, except: [:index, :show]
+   before_action :authorize_landlord, except: [:index, :show]
 
   def index
     @properties = Property.all
@@ -24,16 +24,19 @@ class PropertiesController < ApplicationController
 
 
   def create
+    # Ensure that a landlord is logged in
+    return render json: { error: 'Unauthorized. Please log in.' }, status: :unauthorized unless current_landlord
+  
     # Create properties associated with the current landlord
     @property = current_landlord.properties.new(property_params)
-
+  
     if @property.save
       render json: @property, status: :created
     else
       render json: { errors: @property.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
+  
   def edit
     render json: @property
   end
@@ -58,10 +61,14 @@ class PropertiesController < ApplicationController
   end
 
   def authorize_landlord
-    return unless @property && current_landlord == @property.landlord
+    puts "Params Landlord ID: #{params[:landlordId]}"
+    puts "Current Landlord ID: #{current_landlord&.id}"
   
-    render json: { error: 'Unauthorized access to property.' }, status: :unauthorized
+    return render json: { error: 'Unauthorized access to property.' }, status: :unauthorized unless params[:landlordId].to_i == current_landlord&.id
+  
+    # Rest of the code
   end
+  
   
 
   def property_params

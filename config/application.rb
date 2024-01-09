@@ -11,6 +11,10 @@ module HouseHunt
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_house_hunt_session'
+
+
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:4000' # Replace with the origin(s) of your frontend application

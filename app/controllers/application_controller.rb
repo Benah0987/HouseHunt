@@ -1,16 +1,18 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception, unless: -> { request.format.json? }
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
 
-    helper_method :current_landlord, :current_user
+  helper_method :current_landlord, :current_user
 
   private
 
   def current_landlord
-    @current_landlord ||= Landlord.find(session[:landlord_id]) if session[:landlord_id]
+    @current_landlord ||= Landlord.find_by(id: session[:landlord_id])
   end
+  
+  
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def require_login
@@ -19,4 +21,3 @@ class ApplicationController < ActionController::Base
     end
   end
 end
-

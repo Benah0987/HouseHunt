@@ -9,7 +9,7 @@ class LandlordsController < ApplicationController
       user: current_user,
       landlord: current_landlord,
       properties: current_landlord&.properties,
-      messages: current_landlord&.messages
+      
     }
   end
   
@@ -36,20 +36,25 @@ class LandlordsController < ApplicationController
     end
   end
   
+  
 
 
 
   def process_login
     @landlord = Landlord.find_by(email: params[:email])
-
+  
     if @landlord && @landlord.authenticate(params[:password])
       session[:landlord_id] = @landlord.id
+  
+      # Log the session information
+      Rails.logger.debug("Session after login: #{session.inspect}")
+  
       render json: @landlord
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
-
+  
   private
 
   def set_landlord
@@ -57,8 +62,9 @@ class LandlordsController < ApplicationController
   end
 
   def landlord_params
-    params.permit(:username, :email, :bio, :phone_number,:image, :password)
+    params.permit(:username, :email, :bio, :phone_number, :image, :password)
   end
+  
   
   
 
