@@ -1,9 +1,10 @@
+// AddProperty.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLandlord } from '../context/LandlordContext';
 
 function AddProperty() {
-  const { landlord } = useLandlord();
+  const { landlord, addProperty, updatePropertyData } = useLandlord();
   const [propertyData, setPropertyData] = useState({
     location: '',
     environment: '',
@@ -18,41 +19,14 @@ function AddProperty() {
       ...prevData,
       [name]: value,
     }));
+    // Update propertyData in the LandlordContext
+    updatePropertyData({ [name]: value });
   };
 
   const handleAddProperty = async (e) => {
     e.preventDefault();
-    console.log('Landlord:', landlord);
-  
-
-    try {
-      // Include landlord's information in the property data
-      const propertyDataWithLandlord = {
-        ...propertyData,
-        landlordId: landlord.id, // Assuming landlord has an id property
-      };
-
-      const response = await fetch('http://127.0.0.1:3000/properties', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(propertyDataWithLandlord),
-      });
-
-      if (response.ok) {
-        // Property added successfully
-        console.log('Property added successfully!');
-        // Redirect or show a success message
-      } else {
-        // Handle error response
-        console.error('Failed to add property:', await response.json());
-        // Show an error message
-      }
-    } catch (error) {
-      console.error('An error occurred while adding property:', error);
-      // Show a generic error message
-    }
+    // Call the addProperty function from the context
+    await addProperty();
   };
 
   return (
@@ -68,11 +42,10 @@ function AddProperty() {
                 </Link>
                 <input id="tab-2" type="radio" name="tab" className="sign-up" />
                 <Link to="/signup" className="tab">
-                 s
+                  {/* Add your text here */}
                 </Link>
                 <div className="login-space">
                   <div className="login">
-                    {/* Updated input fields for property */}
                     <div className="group">
                       <label htmlFor="location" className="label">
                         Location
@@ -143,7 +116,6 @@ function AddProperty() {
                         onChange={handleChange}
                       />
                     </div>
-                    {/* End of updated input fields */}
 
                     <div className="group">
                       <input
@@ -154,7 +126,6 @@ function AddProperty() {
                       />
                     </div>
                     <div className="hr"></div>
-                    
                   </div>
                 </div>
               </div>
