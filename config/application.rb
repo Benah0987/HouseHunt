@@ -11,7 +11,11 @@ module HouseHunt
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    config.middleware.use ActionDispatch::Session::CookieStore, key: '_house_hunt_session'
+    
+  # config/initializers/session_store.rb
+
+Rails.application.config.session_store :cookie_store, key: '_househunt_session'
+
 
 
 

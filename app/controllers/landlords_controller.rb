@@ -37,23 +37,17 @@ class LandlordsController < ApplicationController
   end
   
   
-
-
-
   def process_login
     @landlord = Landlord.find_by(email: params[:email])
-  
     if @landlord && @landlord.authenticate(params[:password])
       session[:landlord_id] = @landlord.id
-  
-      # Log the session information
-      Rails.logger.debug("Session after login: #{session.inspect}")
-  
       render json: @landlord
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
+  
+  
   
   private
 
