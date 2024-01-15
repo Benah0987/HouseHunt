@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
 
   before_action :set_property, only: [:show, :edit, :update, :destroy]
    before_action :authorize_landlord, except: [:index, :show, :create]
-   before_action :require_login
+   
 
 
   def index
