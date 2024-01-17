@@ -20,8 +20,10 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.find(params[:id])
     render json: @room
   end
+  
 
   def edit
     # You can choose to implement this based on your needs
@@ -38,6 +40,20 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     head :no_content
+  end
+
+  def pay_deposit
+    # Find the room based on the room ID
+    @room = Room.find(params[:id])
+
+    # Implement your logic for handling the deposit payment
+    # This is where you might want to interact with a payment gateway or update the room status
+
+    render json: { message: 'Deposit payment successful' }
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Room not found' }, status: :not_found
+  rescue StandardError => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   private

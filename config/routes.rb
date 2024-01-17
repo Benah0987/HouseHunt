@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resources :properties do
+    resources :rooms do
+      # Add a custom route for paying deposit
+      member do
+        post 'pay_deposit'
+      end
+    end
+  end
+
   # Login route for landlords
   post '/landlords/login', to: 'landlords#process_login'
   get '/landlords/logout', to: 'sessions#destroy_landlord'
