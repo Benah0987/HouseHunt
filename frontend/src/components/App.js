@@ -37,7 +37,8 @@ function App() {
             <Route path="/landlordup" element={<Landlordup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/addproperty" element={<AddProperty />} />
-            <Route path="/rooms/:roomId/payment" element={<Payment />} />
+            <Route path="/properties/:property_id/rooms/:roomId/payment" element={<Payment />} />
+
 
           </Routes>
           <Footer />

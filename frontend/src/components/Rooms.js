@@ -31,10 +31,21 @@ function Rooms() {
     // Specify property_id as a dependency for useEffect
   }, [property_id]);
 
-  const handleDepositPayment = (roomId) => {
-    // Navigate to the Payment component with the roomId as a parameter
-    navigate(`/rooms/${roomId}/payment`);
+  const handleDepositPayment = (room) => {
+    if (room && room.id) {
+      // Navigate to the Payment component with the correct room ID
+      navigate(`/properties/${property_id}/rooms/${room.id}/payment`, { state: { roomDetails: room } });
+    } else {
+      console.error('Room ID is undefined');
+    }
   };
+  
+  
+  
+  
+  
+  
+  
 
   const handleContactLandlord = (landlordId) => {
     // Implement logic for contacting landlord
@@ -87,11 +98,12 @@ function Rooms() {
                       ) : (
                         <>
                           <button
-                            className="btn btn-success mr-2"
-                            onClick={() => handleDepositPayment(room.id)}
-                          >
-                            Pay Deposit
-                          </button>
+                              className="btn btn-success mr-2"
+                              onClick={() => handleDepositPayment(room)}
+                            >
+                              Pay Deposit
+                            </button>
+
                           <button
                             className="btn btn-primary"
                             onClick={() => handleContactLandlord(room.landlord_id)}
