@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import './rooms.css';
 
-
 function Rooms() {
   const { property_id } = useParams();
   const [roomsData, setRoomsData] = useState([]);
-  const navigate = useNavigate(); // Replace `useHistory` with `useNavigate`
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -28,27 +27,17 @@ function Rooms() {
 
     fetchRooms();
 
-    // Specify property_id as a dependency for useEffect
   }, [property_id]);
 
   const handleDepositPayment = (room) => {
     if (room && room.id) {
-      // Navigate to the Payment component with the correct room ID
       navigate(`/properties/${property_id}/rooms/${room.id}/payment`, { state: { roomDetails: room } });
     } else {
       console.error('Room ID is undefined');
     }
   };
-  
-  
-  
-  
-  
-  
-  
 
   const handleContactLandlord = (landlordId) => {
-    // Implement logic for contacting landlord
     console.log(`Contact landlord ${landlordId}`);
   };
 
@@ -98,11 +87,11 @@ function Rooms() {
                       ) : (
                         <>
                           <button
-                              className="btn btn-success mr-2"
-                              onClick={() => handleDepositPayment(room)}
-                            >
-                              Pay Deposit
-                            </button>
+                            className="btn btn-success mr-2"
+                            onClick={() => handleDepositPayment(room)}
+                          >
+                            Pay Deposit
+                          </button>
 
                           <button
                             className="btn btn-primary"
