@@ -36,7 +36,6 @@ class LandlordsController < ApplicationController
     end
   end
   
-  
   def process_login
     @landlord = Landlord.find_by(email: params[:email])
     if @landlord && @landlord.authenticate(params[:password])
@@ -46,6 +45,7 @@ class LandlordsController < ApplicationController
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
+  
   
   
   

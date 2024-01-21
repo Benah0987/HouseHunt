@@ -28,10 +28,9 @@ class PropertiesController < ApplicationController
 
 
   def create
-    # Ensure that a landlord is logged in
-    # return render json: { error: 'Unauthorized. Please log in.' }, status: :unauthorized unless current_landlord
-    
-    # Create properties associated with the current landlord
+    puts "Current Landlord ID: #{current_landlord&.id}"
+  puts "Session Landlord ID: #{session[:landlord_id]}"
+
     @property = current_landlord.properties.new(property_params.merge(landlord_id: current_landlord.id))
 
     
@@ -71,13 +70,28 @@ class PropertiesController < ApplicationController
     puts "Landlord ID from headers: #{landlord_id_from_headers}"
     puts "Current Landlord ID: #{current_landlord&.id}"
   
-    # Make sure the headers contain the Landlord-Id
-    return render json: { error: 'Landlord-Id not provided in headers.' }, status: :unauthorized unless landlord_id_from_headers
+    # Ensure that headers contain Landlord-Id
+    if landlord_id_from_headers.blank?
+      render json: { error: 'Landlord-Id not provided in headers.' }, status: :unauthorized
+      return
+    end
+  
+    # Try to find the current landlord
+    current_landlord = Landlord.find_by(id: session[:landlord_id])
+  
+    # Ensure that a current landlord is logged in
+    if current_landlord.nil?
+      render json: { error: 'You must be logged in to access this page' }, status: :unauthorized
+      return
+    end
   
     # Check if the IDs match
-    return render json: { error: 'Unauthorized access to property.' }, status: :unauthorized unless landlord_id_from_headers.to_i == current_landlord&.id
+    unless landlord_id_from_headers.to_i == current_landlord.id
+      render json: { error: 'Unauthorized access to property.' }, status: :unauthorized
+      return
+    end
   
-    # Rest of the code
+    # Continue with the rest of the code
   end
   
   
