@@ -1,4 +1,4 @@
-// AddProperty.js
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLandlord } from '../context/LandlordContext';
@@ -25,8 +25,8 @@ function AddProperty() {
 
   const handleAddProperty = async (e) => {
     e.preventDefault();
-    // Call the addProperty function from the context
-    await addProperty();
+    // Call the addProperty function from the context and pass both landlord and propertyData
+    await addProperty(landlord, propertyData);
   };
 
   return (

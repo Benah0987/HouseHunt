@@ -29,46 +29,50 @@ export function LandlordProvider({ children }) {
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         console.log('Login successful:', data);
-
+  
+        // Set the landlord ID in session storage
+        sessionStorage.setItem('landlord_id', data.id);
+  
         setLandlord(data);
-
+  
         Swal.fire({
           icon: 'success',
           title: 'Login Successful!',
           text: 'Welcome back, ' + data.username + '!',
         });
-
+  
         navigate('/dashboard');
       } else {
         const errorData = await response.json();
         console.error('Login failed:', errorData);
-
+  
         Swal.fire({
           icon: 'error',
           title: 'Login Failed',
           text: 'Invalid email or password. Please try again.',
         });
-
+  
         throw new Error('Authentication failed');
       }
     } catch (error) {
       console.error('Login failed:', error.message);
-
+  
       Swal.fire({
         icon: 'error',
         title: 'Login Failed',
         text: 'An error occurred. Please try again later.',
       });
-
+  
       throw new Error('Authentication failed');
     }
   };
+  
 
-  const addProperty = async () => {
+  const addProperty = async (landlord, propertyData) => {
     try {
       // Check if the landlord object exists and has the 'id' property
       if (!landlord || !landlord.id) {

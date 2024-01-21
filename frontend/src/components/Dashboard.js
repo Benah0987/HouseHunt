@@ -97,7 +97,7 @@ function Dashboard() {
                 </div>
 
                 {/* Profile Section */}
-                            <section className={`section about-section gray-bg ${selectedMenuItem === 'profile' ? 'visible' : 'hidden'}`}>
+                       <section className={`section about-section gray-bg ${selectedMenuItem === 'profile' ? 'visible' : 'hidden'}`}>
               <div className="container">
                 <div className="row align-items-center flex-row-reverse">
                   <div className="col-lg-6">
@@ -232,7 +232,7 @@ function Dashboard() {
               {/* Add similar paths for other circles */}
             </svg>
           </div>
-          <p>Total: $2075</p>
+          <p>Total: KES 1million</p>
         </div>
 
         <div className="info">
