@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 function Payment() {
@@ -10,6 +10,7 @@ function Payment() {
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCVV] = useState('');
   const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   // Handle payment logic
   const handlePayment = () => {
@@ -26,7 +27,7 @@ function Payment() {
 
       // Optionally, you can navigate to a different page after payment
       // Example: Redirect to the reservation success page
-      window.location.href = '/home';
+      navigate('/');
     } else {
       // Show an error message if any field is missing
       Swal.fire({

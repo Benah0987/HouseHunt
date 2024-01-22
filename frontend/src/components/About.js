@@ -16,7 +16,7 @@ function About() {
         className="jumbotron bg-cover text-white"
       >
         <div className="container py-5 text-center">
-          <h1 className="display-4 font-weight-bold text-white">Bootstrap static header</h1>
+          <h1 className="display-4 font-weight-bold text-white">HouseHunt</h1>
           <p className="font-italic mb-0 text-dark" style={{ fontSize: '24px', fontWeight: 'bold' }}>
             Explore the essence of your dream home with our expertise.
           </p>
@@ -33,9 +33,9 @@ function About() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-10 col-lg-8">
-              <h3 className="fs-5 mb-2 text-secondary text-uppercase">About</h3>
+              <h3 className="fs-5 mb-2 text-secondary text-uppercase">About</h3>s
               <h2 className="display-5 mb-4">
-                At our core, we prioritize pushing boundaries, embracing the unknown, and fostering a culture of continuous
+                At HouseHunt, we prioritize pushing boundaries, embracing the unknown, and fostering a culture of continuous
                 learning.
               </h2>
               <button type="button" className="btn btn-lg btn-primary mb-3 mb-md-4 mb-xl-5">

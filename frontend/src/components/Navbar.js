@@ -119,22 +119,7 @@ function Navbar() {
         </Link>
       </li>
 
-      <li className="nav-item me-2 me-lg-0 d-none d-md-inline-block">
-        {/* Updated link for "Dashboard" */}
-        <Link
-          className="nav-link"
-          to="/home"
-          style={{
-            fontWeight: 'bold',
-            fontSize: '18px',
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-            transition: 'color 0.3s',
-          }}
-        >
-          Dashboard
-        </Link>
-      </li>
+
     </ul>
     {/* Left links */}
     <Link
